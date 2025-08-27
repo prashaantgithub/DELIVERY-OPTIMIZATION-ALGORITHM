@@ -1,0 +1,56 @@
+D:/UNIVERSITY/HACKATHON/DELIVERY MANAGMENT SYSTEM/CODE/
+├── backend/
+│   ├── .venv/                     # Python's virtual environment folder
+│   ├── alembic/
+│   │   ├── versions/              # Contains all database migration scripts (e.g., xxxx_create_schema.py)
+│   │   └── env.py                 # Alembic configuration script
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── endpoints/
+│   │   │   │   ├── admin.py
+│   │   │   │   ├── agent.py
+│   │   │   │   ├── ai.py
+│   │   │   │   ├── auth.py
+│   │   │   │   └── customer.py
+│   │   │   └── api.py
+│   │   ├── core/
+│   │   │   ├── ai_engine.py
+│   │   │   └── config.py
+│   │   ├── db/
+│   │   │   ├── crud.py
+│   │   │   ├── database.py
+│   │   │   └── models.py
+│   │   ├── schemas/
+│   │   │   └── schemas.py
+│   │   └── main.py
+│   ├── .env
+│   ├── .gitignore
+│   ├── alembic.ini
+│   ├── create_tables.py
+│   ├── requirements.txt
+│   └── seed.py
+│
+└── frontend/
+    ├── assets/
+    │   └── images/
+    │       └── scooty_icon.png
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   ├── admin_analytics.js
+    │   ├── admin_dashboard.js
+    │   ├── agent_analytics.js
+    │   ├── agent_dashboard.js
+    │   ├── api.js
+    │   ├── auth.js
+    │   ├── customer_dashboard.js
+    │   ├── customer_home.js
+    │   ├── map.js
+    │   └── notifications.js
+    ├── admin_analytics.html
+    ├── admin_dashboard.html
+    ├── agent_analytics.html
+    ├── agent_dashboard.html
+    ├── customer_dashboard.html
+    ├── customer_home.html
+    └── login.html

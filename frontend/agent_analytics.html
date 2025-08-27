@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Performance</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>My Performance Analytics</h1>
+            <div class="header-right">
+                <nav>
+                    <a href="agent_dashboard.html">Back to Orders</a>
+                </nav>
+                <div class="notification-bell">
+                    <span class="bell-icon">🔔</span>
+                    <span class="notification-count">0</span>
+                    <div class="notification-panel"></div>
+                </div>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <main class="analytics-grid">
+            <div class="chart-card">
+                <h3>My Delivery Success Rate</h3>
+                <div id="success-rate-trend" class="trend-indicator"></div>
+                <div class="chart-container">
+                    <canvas id="mySuccessRateChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Avg. Pickups Per Day</h3>
+                <div class="stat-card-value" id="avg-pickups-value">Loading...</div>
+                <p class="stat-card-label">Based on days with pickups</p>
+            </div>
+            <div class="chart-card">
+                <h3>My Average Customer Rating</h3>
+                <div class="stat-card-value" id="avg-rating-value">Loading...</div>
+            </div>
+            <div class="chart-card">
+                <h3>Customer Reschedule Reasons</h3>
+                <div class="chart-container">
+                    <canvas id="customerRescheduleChart"></canvas>
+                </div>
+            </div>
+             <div class="chart-card">
+                <h3>My Top Failure Reasons</h3>
+                <div class="chart-container">
+                    <canvas id="myFailureReasonsChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/agent_analytics.js"></script>
+</body>
+</html>

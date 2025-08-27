@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Analytics & Insights</h1>
+            <div class="header-right">
+                 <nav>
+                    <a href="admin_dashboard.html">Back to Orders</a>
+                </nav>
+                <div class="notification-bell">
+                    <span class="bell-icon">🔔</span>
+                    <span class="notification-count">0</span>
+                    <div class="notification-panel"></div>
+                </div>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <main class="analytics-grid">
+            <div class="chart-card">
+                <h3>Delivery Success Rate</h3>
+                <div class="chart-container">
+                    <canvas id="successRateChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Top Agent Failure Reasons</h3>
+                <div class="chart-container">
+                    <canvas id="failureReasonsChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Top Customer Cancellation Reasons</h3>
+                <div class="chart-container">
+                    <canvas id="cancellationReasonsChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card full-width">
+                <h3>Agent Performance Leaderboard</h3>
+                <div class="chart-container">
+                    <canvas id="agentPerformanceChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card full-width">
+                <h3>Deliveries Over Last 7 Days</h3>
+                <div class="chart-container">
+                    <canvas id="deliveriesOverTimeChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card full-width">
+                <h3>Peak Hour Analysis</h3>
+                <div class="chart-container">
+                    <canvas id="peakHourChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/admin_analytics.js"></script>
+</body>
+</html>

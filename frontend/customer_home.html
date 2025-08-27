@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMS Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="store-container">
+        <header>
+            <h1>DMS Store</h1>
+            <div class="header-right">
+                <nav>
+                    <a href="customer_dashboard.html">My Orders</a>
+                </nav>
+                <div class="notification-bell">
+                    <span class="bell-icon">🔔</span>
+                    <span class="notification-count">0</span>
+                    <div class="notification-panel"></div>
+                </div>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <main class="product-grid">
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61kAlWqL8kL._SX679_.jpg" alt="Cookware Set">
+                <h3>Non-Stick Cookware Set</h3>
+                <p class="price">₹1,499</p>
+                <button class="buy-btn" data-product-id="1">Buy Now</button>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/51wAFLTe5aL._SX679_.jpg" alt="Stainless Steel Kadai">
+                <h3>Stainless Steel Kadai</h3>
+                <p class="price">₹2,869</p>
+                <button class="buy-btn" data-product-id="2">Buy Now</button>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61Q5+Nf5H6L._SX679_.jpg" alt="4-Piece Cookware Set">
+                <h3>4-Piece Cookware Set</h3>
+                <p class="price">₹1,189</p>
+                <button class="buy-btn" data-product-id="3">Buy Now</button>
+            </div>
+             <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/71WvIMFFaDL._SX679_.jpg" alt="Product Image">
+                <h3>Pigeon Cookware Set</h3>
+                <p class="price">₹1,099</p>
+                <button class="buy-btn" data-product-id="4">Buy Now</button>
+            </div>
+        </main>
+    </div>
+
+    <div id="slot-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Select a Delivery Slot</h3>
+            <p>Our AI has recommended the best slots for your location.</p>
+            <div id="slot-options">
+                <div id="loader" class="loader"></div>
+            </div>
+            <button id="confirm-order-btn" style="display: none;">Confirm Order</button>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/customer_home.js"></script>
+</body>
+</html>

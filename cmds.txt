@@ -1,0 +1,12 @@
+.\.venv\Scripts\activate
+pip install -r requirements.txt
+alembic upgrade head
+
+uvicorn app.main:app --reload --main
+
+
+admin - admin@dmshack.com pass: password
+
+agent - agent1@dmshack.com pass: password
+
+cust - customer1@dmshack.com pass: password

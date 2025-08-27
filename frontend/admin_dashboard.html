@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <div class="header-right">
+                <nav>
+                    <a href="admin_analytics.html">View Analytics</a>
+                </nav>
+                <button id="check-delays-btn" class="action-btn delay">System Health Check</button>
+                <div class="notification-bell">
+                    <span class="bell-icon">🔔</span>
+                    <span class="notification-count">0</span>
+                    <div class="notification-panel"></div>
+                </div>
+                <div id="user-info"></div>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+        
+        <main>
+            <section id="orders-section">
+                <h2>All Orders</h2>
+                <div class="filters">
+                    <div class="form-group">
+                        <label for="status-filter">Filter by Status:</label>
+                        <select id="status-filter">
+                            <option value="all">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="assigned">Assigned</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="failed">Failed</option>
+                            <option value="rescheduled">Rescheduled</option>
+                            <option value="disputed">Disputed</option>
+                            <option value="pending_confirmation">Pending Confirmation</option>
+                            <option value="reschedule_requested">Reschedule Requested</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="agent-filter">Filter by Agent:</label>
+                        <select id="agent-filter">
+                            <option value="all">All Agents</option>
+                        </select>
+                    </div>
+                </div>
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                            <th>Assigned Agent</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-tbody">
+                        <tr><td colspan="5" style="text-align:center;">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <div id="assign-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Assign Agent to Order #<span id="modal-order-id"></span></h3>
+            <div class="form-group">
+                <label for="agent-select">Select an Agent:</label>
+                <select id="agent-select"></select>
+            </div>
+            <button id="ai-recommend-btn" class="action-btn in-progress">✨ AI Recommend</button>
+            <button id="confirm-assign-btn">Confirm Assignment</button>
+        </div>
+    </div>
+
+    <div id="order-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Order Details</h3>
+            <div class="order-info">
+                <strong>Order ID:</strong> <span id="modal-order-id-display"></span><br>
+                <strong>Delivery Time:</strong> <span id="modal-delivery-window"></span>
+            </div>
+            <ul class="timeline">
+                <li data-status="pending">Ordered</li>
+                <li data-status="cancellation_request">Reschedule Requested</li>
+                <p class="delay-reason" id="cancellation-reason-text-admin"></p>
+                <li data-status="rescheduled">Rescheduled</li>
+                <li data-status="assigned">Assigned to Agent</li>
+                <li data-status="in_progress">Out for Delivery</li>
+                <li data-status="failed_attempt">Delivery Attempt Failed</li>
+                <p class="delay-reason" id="failure-reason-text-admin"></p>
+                <li data-status="delayed">Delayed</li>
+                <p class="delay-reason" id="delay-reason-text-admin"></p>
+                <li data-status="delivered">Delivered</li>
+            </ul>
+            <div id="feedback-display" class="feedback-container">
+                <h4>Customer Feedback</h4>
+                <p><strong>Rating:</strong> <span id="feedback-rating"></span></orion.stars</p>
+                <p><strong>Comment:</strong> <span id="feedback-comment"></span></p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="delayed-orders-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>System Health Check Results</h3>
+            <ul id="delayed-orders-list"></ul>
+            <button id="notify-users-btn">Notify Affected Users</button>
+        </div>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/admin_dashboard.js"></script>
+</body>
+</html>

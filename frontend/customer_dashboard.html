@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>My Orders Dashboard</h1>
+            <div class="header-right">
+                <nav>
+                    <a href="customer_home.html">Home</a>
+                </nav>
+                <div class="notification-bell">
+                    <span class="bell-icon">🔔</span>
+                    <span class="notification-count">0</span>
+                    <div class="notification-panel"></div>
+                </div>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+        
+        <main>
+            <div class="analytics-grid">
+                <div class="chart-card">
+                    <h3>My Order Statuses</h3>
+                    <div class="chart-container">
+                        <canvas id="myOrderStatusChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Orders by Month</h3>
+                    <div class="chart-container">
+                        <canvas id="ordersByMonthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button id="active-tab" class="tab-btn active" data-target="active-orders-table">Active Orders</button>
+                <button id="history-tab" class="tab-btn" data-target="history-orders-table">Order History</button>
+            </div>
+
+            <div id="active-orders-table" class="tab-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Status</th>
+                            <th>Delivery Window</th>
+                            <th>Assigned Agent</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="active-orders-tbody"></tbody>
+                </table>
+            </div>
+
+            <div id="history-orders-table" class="tab-content hidden">
+                <table>
+                    <thead>
+                         <tr>
+                            <th>Order ID</th>
+                            <th>Status</th>
+                            <th>Delivery Window</th>
+                            <th>Assigned Agent</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-orders-tbody"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="order-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Order Details</h3>
+            <div class="order-info">
+                <strong>Order ID:</strong> <span id="modal-order-id-display"></span><br>
+                <strong>Delivery Time:</strong> <span id="modal-delivery-window"></span>
+            </div>
+            <ul class="timeline">
+            </ul>
+        </div>
+    </div>
+    
+    <div id="reschedule-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Request to Reschedule Order #<span id="reschedule-order-id"></span></h3>
+            <div class="form-group">
+                <label for="reschedule-reason">Reason for Rescheduling:</label>
+                <select id="reschedule-reason">
+                    <option value="Not Available at Location">I won't be at the delivery location</option>
+                    <option value="Conflicting Appointment">I have a conflicting appointment</option>
+                    <option value="Emergency / Last-Minute Travel">Emergency / Last-Minute Travel</option>
+                    <option value="Address in Order is Incorrect">The address in my order is incorrect</option>
+                    <option value="Issues with Location Access">There are access issues (e.g., security, local event)</option>
+                </select>
+            </div>
+             <div class="form-group">
+                <label for="reschedule-details">Additional Details:</label>
+                <input type="text" id="reschedule-details" placeholder="Optional details">
+            </div>
+            <button id="confirm-reschedule-btn">Confirm Request</button>
+        </div>
+    </div>
+    
+    <div id="feedback-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Feedback for Order #<span id="feedback-order-id"></span></h3>
+            <div class="form-group">
+                <label for="rating-select">Rating (1-5):</label>
+                <select id="rating-select">
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Very Poor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="feedback-text">Comments:</label>
+                <textarea id="feedback-text" rows="4"></textarea>
+            </div>
+            <button id="submit-feedback-btn">Submit Feedback</button>
+        </div>
+    </div>
+
+    <div id="map-modal" class="modal">
+        <div class="modal-content map-modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Live Tracking for Order #<span id="map-order-id"></span></h3>
+            <div id="map"></div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/customer_dashboard.js"></script>
+</body>
+</html>

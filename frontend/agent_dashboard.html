@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Agent Dashboard</h1>
+            <div class="header-right">
+                <nav>
+                    <a href="agent_analytics.html">My Performance</a>
+                </nav>
+                <div class="notification-bell">
+                    <span class="bell-icon">🔔</span>
+                    <span class="notification-count">0</span>
+                    <div class="notification-panel"></div>
+                </div>
+                <div id="user-info"></div>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+        
+        <main>
+            <section id="assigned-orders-section">
+                <h2>My Assigned Orders</h2>
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer Name</th>
+                            <th>Delivery Address</th>
+                            <th>Delivery Window</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <div id="reason-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="reason-modal-title"></h3>
+            <div class="form-group">
+                <label for="reason-select">Select a Reason:</label>
+                <select id="reason-select"></select>
+            </div>
+            <div class="form-group">
+                <label for="details-input">Additional Details (Optional):</label>
+                <input type="text" id="details-input" placeholder="e.g., Road name, specific issue">
+            </div>
+            <button id="confirm-reason-btn">Submit</button>
+        </div>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/agent_dashboard.js"></script>
+</body>
+</html>
